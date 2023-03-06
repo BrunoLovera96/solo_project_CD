@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <title>Login</title>
+</head>
+<body>
+    <main class="container text-start text-white mt-4">
+        <div class="row">
+            <div class="col-sm-5 bg-primary p-3">
+                <h1>Register</h1>
+                <form action="/add/user" method="POST">
+
+                    {% with messages = get_flashed_messages(category_filter=['register']) %} {% if messages %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %} {% endwith %}
+                    
+                    <label for="first_name" class="form-label mt-3">Nombre:</label>
+                    <input type="text" name="first_name" class="form-control">
+                
+                    <label for="last_name" class="form-label mt-3">Apellido:</label>
+                    <input type="text" name="last_name" class="form-control">
+
+                    <label for="company" class="form-label mt-3">Empresa:</label>
+                    <input type="text" name="company" class="form-control">
+
+                    <label for="department" class="form-label mt-3">Departmento:</label>
+                    <input type="text" name="department" class="form-control">
+                    
+                    <label for="position" class="form-label mt-3">Posición:</label>
+                    <input type="text" name="position" class="form-control">                    
+
+                    <label for="email" class="form-label mt-3">Email:</label>
+                    <input type="text" name="email" class="form-control">
+
+                    <label for="password" class="form-label mt-3">Contraseña</label>
+                    <input type="password" name="password" class="form-control"/>
+        
+                    <label for="confirm" class="form-label mt-3">Confirmar Contraseña:</label>
+                    <input type="password" name="confirm" class="form-control" />
+        
+                    <input type="submit" value="Register" class="btn btn-warning mt-3">
+        
+                </form>
+    
+            </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-5 bg-success p-3">
+                <h1>Login</h1>
+                <form action="/login/user" method="POST">
+                    
+                    {% with messages = get_flashed_messages(category_filter=['login']) %} {% if messages %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %} {% endwith %}
+
+        
+                    <label for="email" class="form-label mt-3">Email:</label>
+                    <input type="text" name="email" class="form-control">
+        
+                    <label for="" class="form-label mt-3">Contraseña</label>
+                    <input type="password" name="password" class="form-control" />
+
+                    <input type="submit" value="Login" class="btn btn-warning mt-3">
+                </form>
+            </div>
+        </div>
+        
+        
+    </main>
+</body>
+</html>

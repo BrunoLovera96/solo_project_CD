@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <title>Home</title>
+</head>
+<body>
+    <nav class="container-fluid bg-primary text-white" >
+        <div class="d-flex justify-content-between">
+            <a href="/dashboard"><h1 class="text-warning">DoIt</h1></a>
+            <a href="/show/products"><h6 class="text-white pt-3">Productos</h6></a>    
+            <h6 class="pt-3">Hoy es el día que vas alcanzar tus metas, {{ user[0].first_name }}!!</h6>
+            <a href="/show/user"><h6 class="text-white pt-3">Cuenta</h6></a>
+            <a href="/logout"><h6 class="text-white pt-3">Cerrar Sesion</h6></a>
+        </div>
+    </nav>
+    <main class="d-flex">
+        <section class="col-8 p-2 m-6 d-flex justify-content-between flex-wrap-reverse">
+            {% for row in product_pending %}
+                <table class="table text-white bg-primary m-1">
+                    <thead class="">
+                        <th colspan="2" class="text-warning text-center">{{ row.title}}</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Descripción:</td>
+                            <td>{{ row.description}}</td>
+                        </tr>
+                        <tr>
+                            <td>Projecto:</td>
+                            <td>{{ row.project}}</td>
+                        </tr>
+                        <tr>
+                            <td>Inicio:</td>
+                            <td>{{ row.date_start}}</td>
+                        </tr>
+                        <tr>
+                            <td>Fecha de Entrega:</td>
+                            <td>{{ row.deadline}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-end">
+                                <form action="/process/finish/product" method="POST" class="form">
+                                    <input type="hidden" name="idProducts" value="{{ row.idProducts }}">
+                                    <input type="submit" value="Entregar" class="btn btn-warning btn-sm">
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
+            {% endfor %}
+        </section>
+        <section class="bg-success col-3 p-2 m-4 text-white">
+            <form action="/process/add/product" method="POST">
+                    <input type="hidden" name="user_id" value="{{ user[0].idUsers }}">
+                    <label for="title" class="form-label">Producto</label>
+                    <input type="text" name="title" class="form-control form-control-sm">
+                    <label for="description" class="form-label">Descripción</label>
+                    <input type="text" name="description" class="form-control form-control-sm">
+                    <label for="project" class="form-label">Projecto al que corresponde</label>
+                    <input type="text" name="project" class="form-control form-control-sm">
+                    <label for="date_start" class="form-label">Fecha de Inicio</label>
+                    <input type="date" name="date_start" class="form-control form-control-sm">
+                    <label for="deadline" class="form-label">Fecha de Entrega</label>
+                    <input type="date" name="deadline" class="form-control form-control-sm">
+                    <input type="submit" value="Crear el poducto" class="btn btn-warning mt-2">
+                </form>
+        </section>
+    </main>
+    
