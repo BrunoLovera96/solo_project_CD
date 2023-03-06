@@ -1,5 +1,6 @@
 # PROYECTO INDIVIDUAL CODING DOJO
 Este proyecto fue desarrollado en flask a partir de los conocimientos adquieridos a través del bootcamp de Coding Dojo.
+Con este proyecto se busca aumentar la eficiencia y eficacia de los empleados, permitíendoles concentrarse en sus actividades y evitándo que puedan olvidarse de algún trabajo importante
 
 Se recomienda seguir los siguientes pasos:
 1. Crear carpeta en la cual quieres albergar el proyect.
