@@ -1,6 +1,17 @@
 # PROYECTO INDIVIDUAL CODING DOJO
 Este proyecto fue desarrollado en flask a partir de los conocimientos adquieridos a través del bootcamp de Coding Dojo.
 
+Se recomienda seguir los siguientes pasos:
+1. Crear carpeta en la cual quieres albergar el proyect.
+2. Abrir la carpeta en la terminar de Visual Studio.
+3. Crear el ambiente virtual.
+4. Instalar flask, flask-bcrypt
+5. Instalar pymsql
+3. Crear todas las carpetas correspondientes
+4. Crear todos los archivos .py
+5. Crear todos los archivos .html
+6. Copiar y pegar el contenido en el archivo correspondiente
+
 ## Para crear la base de datos
 -- MySQL Workbench Forward Engineering
 
